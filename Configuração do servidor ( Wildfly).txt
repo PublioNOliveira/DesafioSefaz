@@ -1,0 +1,12 @@
+The server is - local
+Controlled by: Filesystem and shell operations
+wildFly - 18.0 Runtime
+Server's host name - localhost
+server name - Wildfly 18 at localhost
+
+name - WildFly 18.0 Runtime
+Home Directory - C:\sistem estudo\wildfly-18.0.1.Final
+Execution Environment JavaSE - 1.8
+Altenate JRE jdk 1.8.0_251 ( a opção marcada)
+Server base directory - standalone
+Configuration File - standalone.xml

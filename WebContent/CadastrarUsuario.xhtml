@@ -1,0 +1,63 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+    <h:outputStylesheet name="primeicons/primeicons.css" library="primefaces" />
+	<title>Cadastrar Usuário</title>
+</h:head>
+
+<h:body>
+	<h:form>
+			<p:messages/>
+			<p:dialog header="Cadastro de usuário" modal="true" visible="true"> 
+			<p:panelGrid columns="2">
+				<p:outputLabel value="Nome" />
+				<p:inputText value="#{UsuarioBean.nome}" />
+				<p:outputLabel value="Email:" />
+				<p:inputText value="#{UsuarioBean.email}" />
+				<p:outputLabel value="Senha" />
+				<p:inputText   value="#{UsuarioBean.senha}" />
+				<p:outputLabel value="CPF" />
+				<p:inputText   maxlength="11" value="#{UsuarioBean.cpf}" />	
+		  		</p:panelGrid>
+						
+		     <p:fieldset legend="Telefones">
+		            <p:panelGrid columns="4">
+		     		<p:outputLabel value="ddd" />
+		     		<p:outputLabel value="número" />
+		     		<p:outputLabel value="tipo" />
+		     		<p:outputLabel value="" />
+					<p:inputText id="telddd"  value="#{UsuarioBean.ddd}" />					
+					<p:inputText id="telnum" value="#{UsuarioBean.numero}" />					
+					<p:inputText id="teltipo" value="#{UsuarioBean.tipo}" />
+					<p:commandButton id="AdicionarTelefone" update="@form"  actionListener="#{UsuarioBean.adicionarTelefoneNaLista}"  icon="pi pi-plus"/>
+					</p:panelGrid>
+		         
+                <p:dataTable id="dataListatelefones" editable="true" var="telefone" value="#{UsuarioBean.usuario.listaTelefone}">
+				<p:column headerText="DDD">
+					<h:inputText value="#{telefone.ddd}" />
+				</p:column>
+				<p:column headerText="Número">
+					<h:inputText value="#{telefone.numero}" />
+				</p:column>
+				<p:column headerText="Tipo">
+					<h:inputText value="#{telefone.tipo}" />
+				</p:column>
+				<p:commandButton id="AdicionarTelefone" actionListener="#{UsuarioBean.adicionarTelefoneNaLista}"  icon="pi pi-plus"/>
+				
+			   </p:dataTable>
+                 </p:fieldset>
+			
+		
+			<p:panelGrid columns="3">
+				<p:commandButton value="Voltar" actionListener="#{UsuarioBean.PesquisarUsuario2}" action="Usuarios?faces-redirect=true" />
+				<p:commandButton value="Cadastrar" update="@form" action="#{UsuarioBean.CadastrarUsuario}"/>
+				
+			</p:panelGrid>
+	</p:dialog>
+		
+	</h:form>
+</h:body>
+</html>

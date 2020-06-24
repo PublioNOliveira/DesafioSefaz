@@ -1,0 +1,50 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Atualizar Usuário</title>
+</h:head>
+
+<h:body>
+	<h:form>
+			<p:messages/>
+			<p:dialog header="Atualização de usuário" modal="true" visible="true"> 
+			<p:panelGrid columns="2">
+				<p:outputLabel value="Nome" />
+				<p:inputText value="#{UsuarioBean.usuario.nome}" />
+				<p:outputLabel value="Email:" />
+				<p:inputText value="#{UsuarioBean.usuario.email}" />
+				<p:outputLabel value="Senha" />
+				<p:inputText   value="#{UsuarioBean.usuario.senha}" />
+				<p:outputLabel value="CPF" />
+				<h:outputText   maxlength="11" value="#{UsuarioBean.usuario.cpf}" />		       	
+				</p:panelGrid>
+				
+		         
+                <p:dataTable id="dataListatelefones" editable="true" var="telefone" value="#{UsuarioBean.usuario.listaTelefone}">
+				<p:column headerText="DDD">
+					<h:inputText value="#{telefone.ddd}" />
+				</p:column>
+				<p:column headerText="Número">
+					<h:inputText value="#{telefone.numero}" />
+				</p:column>
+				<p:column headerText="Tipo">
+					<h:inputText value="#{telefone.tipo}" />
+				</p:column>
+				<p:commandButton id="AdicionarTelefone" actionListener="#{UsuarioBean.adicionarTelefoneNaLista}"  icon="pi pi-plus"/>
+				
+			   </p:dataTable>
+				 
+					
+			<p:panelGrid columns="2">
+				<p:commandButton value="Voltar" update="@form" actionListener="#{UsuarioBean.PesquisarUsuario2}" action="Usuarios" />
+				<p:commandButton value="Atualizar" update="@form"  actionListener="#{UsuarioBean.AlterarUsuario}" ajax="true" action="AtualizarUsuario"/>
+				
+			</p:panelGrid>
+	</p:dialog>
+		
+	</h:form>
+</h:body>
+</html>

@@ -1,0 +1,7 @@
+entidades\Telefone.class
+util\ConexaoMySQL.class
+controle\LoginBean.class
+controle\UsuarioBean.class
+dao\UsuarioDAO.class
+dao\UsuarioDAOImpl.class
+entidades\Usuario.class

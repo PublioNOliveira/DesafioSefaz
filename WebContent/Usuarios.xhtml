@@ -1,0 +1,62 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+
+
+<h:head>
+	<title>Usuários</title>
+</h:head>
+
+<h:body>
+	<h:form>
+		<p:dialog header="USUÁRIOS" modal="true" visible="true">
+			<p:outputLabel
+				value="BEM VINDO A TELA DE USUÁRIOS, DIGITE O CPF E ESCOLHA A OPÇÃO DESEJADA" />
+			<p:panelGrid columns="5" styleClass="ui-noborder">
+				<p:outputLabel value="CPF" />
+				<p:inputText maxlength="11" value="#{UsuarioBean.cpf}" />
+				<p:commandButton value="Deletar" update="@form"	actionListener="#{UsuarioBean.ExcluirUsuario}" action="#{UsuarioBean.PesquisarUsuario2}" />
+				<p:commandButton value="Atualizar" actionListener="#{UsuarioBean.PesquisarUsuario2}" action="AtualizarUsuario?faces-redirect=true" />
+				<p:commandButton value="Pesquisar" update="@form" actionListener="#{UsuarioBean.PesquisarUsuario2}"  action="PesquisarUsuario?faces-redirect=true" />
+			</p:panelGrid>
+
+			<p:panelGrid columns="3" styleClass="ui-noborder">
+				<p:commandButton value="Sair" action="Login" />
+				<p:commandButton value="Cadastrar" update="@form" action="CadastrarUsuario?faces-redirect=true" />
+			</p:panelGrid>
+
+			<p:outputLabel value="" />
+			<p:outputLabel value="LISTA DE USUÁRIOS" />
+			
+			<p:dataTable var="usuario" value="#{UsuarioBean.listaUsuario2}">
+				<p:column headerText="Nome">
+					<h:outputText value="#{usuario.nome}" />
+				</p:column>
+				<p:column headerText="Email">
+					<h:outputText value="#{usuario.email}" />
+				</p:column>
+				<p:column headerText="Senha">
+					<h:outputText value="#{usuario.senha}" />
+				</p:column>
+				<p:column headerText="Cpf">
+					<h:outputText value="#{usuario.cpf}" />
+				</p:column>
+
+				<p:column headerText="DDD">
+					<h:outputText value="#{usuario.telefone.ddd}" />
+				</p:column>
+				<p:column headerText="Número do telefone">
+					<h:outputText value="#{usuario.telefone.numero}" />
+				</p:column>
+				<p:column headerText="Tipo">
+					<h:outputText value="#{usuario.telefone.tipo}" />
+				</p:column>
+
+				</p:dataTable>
+
+		</p:dialog>
+	</h:form>
+</h:body>
+</html>
